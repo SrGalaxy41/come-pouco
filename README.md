@@ -1,4 +1,4 @@
-﻿# Come Pouco Monorepo
+# Come Pouco Monorepo
 
 Estrutura com frontend Angular, backend Node.js + Express + TypeScript, Prisma ORM e PostgreSQL em Docker.
 
@@ -20,6 +20,12 @@ Estrutura com frontend Angular, backend Node.js + Express + TypeScript, Prisma O
 ```bash
 docker compose up -d
 ```
+
+Ordem recomendada para subir o ambiente:
+
+1. `docker compose up -d`
+2. `npx prisma migrate deploy`
+3. `npm run dev:backend`
 
 Para resetar em DEV quando houver mudancas de schema:
 
@@ -52,8 +58,44 @@ App em `http://localhost:4200`.
 
 ## Credenciais de teste
 
-- E-mail: `admin@comepouco.local`
-- Senha: `123456`
+- Usuario: `admin`
+- Senha: `comepouco102030@`
+
+## Novas variaveis de ambiente (backend)
+
+- `APP_ENV=development|production`
+- `TRUSTED_DEVICE_DAYS=30`
+- `TWOFA_ENCRYPTION_KEY=<chave forte>`
+
+## Hardening de Auth (producao)
+
+- Backend agora retorna falhas com `{ message, errorCode, details? }` (details apenas em `development`).
+- Interceptor do frontend faz logout automatico somente para:
+  - `AUTH_TOKEN_INVALID`
+  - `AUTH_TOKEN_EXPIRED`
+- Guia de baseline Prisma para ambientes legados:
+  - `come-pouco-backend/docs/db-baseline.md`
+
+### ErrorCodes de Auth
+
+- `AUTH_TOKEN_MISSING`
+- `AUTH_TOKEN_INVALID`
+- `AUTH_TOKEN_EXPIRED`
+- `AUTH_INVALID_REQUEST`
+- `AUTH_INVALID_CREDENTIALS`
+- `AUTH_INVALID_PASSWORD`
+- `AUTH_INVALID_USERNAME`
+- `AUTH_INVALID_2FA_CODE`
+- `AUTH_2FA_NOT_ENABLED`
+- `AUTH_2FA_ALREADY_ENABLED`
+- `AUTH_2FA_SETUP_NOT_STARTED`
+- `AUTH_2FA_SETUP_EXPIRED`
+- `AUTH_2FA_STATE_INVALID`
+- `AUTH_TRUSTED_DEVICE_NOT_FOUND`
+- `AUTH_IDENTIFIER_CONFLICT`
+- `AUTH_USER_NOT_FOUND`
+- `AUTH_SCHEMA_OUTDATED`
+- `AUTH_FORBIDDEN`
 
 ## Recursos implementados
 
@@ -71,8 +113,15 @@ App em `http://localhost:4200`.
 ## Principais endpoints
 
 - `POST /api/auth/login`
+- `POST /api/auth/login/2fa`
 - `POST /api/auth/register`
 - `GET /api/auth/me`
+- `POST /api/auth/2fa/setup`
+- `POST /api/auth/2fa/confirm`
+- `POST /api/auth/2fa/disable`
+- `GET /api/auth/trusted-devices`
+- `DELETE /api/auth/trusted-devices/:id`
+- `POST /api/admin/users/:id/reset-2fa` (ADMIN)
 - `GET/POST/PUT/DELETE /api/users`
 - `POST /api/users/employees` (OWNER cria funcionario da propria empresa)
 - `GET/POST/PUT /api/companies` (ADMIN)
