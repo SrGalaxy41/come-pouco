@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: '/api'
+  apiUrl: 'http://apicomepouco.palsincomehub.com/api'
 };
