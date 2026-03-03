@@ -31,7 +31,8 @@ import { PurchasePlatformService } from '../../core/services/purchase-platform.s
     MatSelectModule,
     MatTableModule
   ],
-  templateUrl: './companies.component.html'
+  templateUrl: './companies.component.html',
+  styleUrl: './companies.component.scss'
 })
 export class CompaniesComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder);

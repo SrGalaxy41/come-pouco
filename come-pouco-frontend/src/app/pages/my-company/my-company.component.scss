@@ -1,0 +1,173 @@
+:host {
+  display: block;
+}
+
+.admin-grid {
+  display: grid;
+  gap: 1.15rem;
+  grid-template-columns: minmax(320px, 460px) 1fr;
+}
+
+.form-card,
+.table-card {
+  border-radius: 18px;
+}
+
+.form-card {
+  background: linear-gradient(165deg, #f6fffb 0%, #ffffff 38%);
+}
+
+.table-card {
+  background: linear-gradient(165deg, #f8faff 0%, #ffffff 32%);
+}
+
+mat-card-header {
+  padding-bottom: 0.65rem;
+}
+
+.entity-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.entity-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding-top: 0.35rem;
+}
+
+.entity-actions .mat-mdc-button-base {
+  min-height: 44px;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.table-shell {
+  margin-top: 0.9rem;
+  border: 1px solid rgba(21, 66, 102, 0.14);
+  border-radius: 14px;
+  overflow: auto;
+  background: #fff;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 680px;
+}
+
+.data-table .mat-mdc-header-row {
+  background: #edf7ff;
+}
+
+.data-table .mat-mdc-header-cell {
+  color: #154266;
+  font-weight: 700;
+}
+
+.data-table .mat-mdc-row:hover {
+  background: rgba(14, 165, 164, 0.06);
+}
+
+.id-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #dff3ff;
+  color: #0f3d62;
+  font-weight: 700;
+}
+
+.strong-cell {
+  font-weight: 700;
+  color: #123f61;
+}
+
+.mobile-employee-list {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-header {
+    flex-wrap: wrap;
+  }
+
+  .table-header > :first-child {
+    width: 100%;
+  }
+
+  .toolbar-spacer {
+    display: none;
+  }
+
+  .table-header button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .entity-actions {
+    width: 100%;
+  }
+
+  .entity-actions .mat-mdc-button-base {
+    width: 100%;
+  }
+
+  .table-shell {
+    display: none;
+  }
+
+  .mobile-employee-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.9rem;
+  }
+
+  .employee-card {
+    border: 1px solid rgba(20, 83, 116, 0.18);
+    border-radius: 12px;
+    background: #fff;
+    padding: 0.8rem;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .employee-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .employee-date {
+    font-size: 0.82rem;
+    color: #4b5563;
+    text-align: right;
+  }
+
+  .employee-name {
+    margin: 0;
+    font-weight: 700;
+    color: #123f61;
+  }
+
+  .employee-line {
+    margin: 0;
+    color: #334155;
+  }
+}

@@ -28,7 +28,8 @@ import { UserService } from '../../core/services/user.service';
     MatProgressBarModule,
     MatTableModule
   ],
-  templateUrl: './my-company.component.html'
+  templateUrl: './my-company.component.html',
+  styleUrl: './my-company.component.scss'
 })
 export class MyCompanyComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
